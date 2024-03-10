@@ -8,7 +8,7 @@ for i in range(10):
                 list.append(i*100+j*10+k)
 print(min(list))
 
-                
+            
 # 2. N = int(input())
 # length=len(str(N))
 
