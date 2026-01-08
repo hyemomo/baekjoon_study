@@ -1,13 +1,10 @@
 function findMaxPlusOrMultiply(array) {
-  let current = array[0];
-  for (let i = 1; i <array.length; i++) {
-    if (current * array[i] > current + array[i]) {
-      current = current * array[i];
-    } else {
-      current = current + array[i];
-    }
+  let current = 0;
+  for (const num of array) {
+    if (num <= 1 || current <= 1) current += num;
+    else current *= num;
   }
-  return current
+  return current;
 }
 console.log(
   "정답 = 728 현재 풀이 값 = " + findMaxPlusOrMultiply([0, 3, 5, 6, 1, 2, 4])
