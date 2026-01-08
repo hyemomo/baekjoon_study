@@ -1,19 +1,21 @@
 function findMaxOccurredAlphabet(str) {
-str = str.toLowerCase()
-  let result = 0;
+  str = str.toLowerCase();
+  let max = 0;
+  let maxIndex = -1;
   let arr = Array(26).fill(0);
   for (const ch of str) {
     if (ch >= "a" && ch <= "z") {
       arr[ch.charCodeAt(0) - "a".charCodeAt(0)] += 1;
     }
   }
-  for (const i of arr) {
-    if (i > result) {
-      result = i;
-    }
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] > max) {
+    max = arr[i];
+    maxIndex = i;
   }
+}
 
-  return result.fromCharCode(16);
+  return String.fromCharCode("a".charCodeAt(0)+maxIndex);
 }
 console.log(
   "정답 = i 현재 풀이 값 = " +
