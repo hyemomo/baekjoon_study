@@ -1,14 +1,18 @@
 function findPrimeListUnderNumber(number) {
   const primeNumberList = Array();
-  
+
   for (let i = 2; i < number + 1; i++) {
-    //만약 i=19 라면
+    //i= 19
     let isPrimeNumber = true;
-    //현재 j= 2~18 까지 모두 비교를 해주고 있음
-    // 19가 만약에 2와 3으로 나누어떨어지지 않는다면 6으로도 나누어 떨어지지 않을 것임.
+    // 소수의 특징!
+    // N의 제곱근보다 크지 않은 어떤 소수로도 나누어 떨어지지 않는다.
+    // 소수 3에서 나누어 떨어지지 않았으면 9 아래의 소수로는 절대로 나누어떨어지지 않는다.
     for (const j of primeNumberList) {
-      // 소수 리스트에 있는 소수로 나누었을 때 나누어 떨어지지 않으면 i도 소수임.
-      if (i % j === 0) isPrimeNumber = false;
+      if (j * j > i) break; // 바로 소수
+      if (i % j === 0) {
+        isPrimeNumber = false; //[2,3,5] -> i가 25보다 작다! 그럼 무조건 나누어 떨어지지 않음. => 19는 소수이다.
+        break;
+      }
     }
     if (isPrimeNumber === true) {
       primeNumberList.push(i);
