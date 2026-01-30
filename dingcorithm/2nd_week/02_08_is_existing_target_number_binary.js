@@ -3,7 +3,7 @@ function isExistingTargetNumberBinary(target, array) {
   let current_max = array.length - 1;
 
   while (current_min <= current_max) {
-    let index = Math.floor((current_min + current_max) / 2);
+    const index = Math.floor((current_min + current_max) / 2);
     if (target === array[index]) return true;
     if (target > array[index]) {
       current_min = index + 1;
