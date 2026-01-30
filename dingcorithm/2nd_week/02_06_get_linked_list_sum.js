@@ -55,25 +55,22 @@ class LinkedList {
     prev.next = current.next;
   }
 }
-
+// 현재 중복되는 코드가 많음!-> 함수로 나누자.
 const getLinkedListSum = (list1, list2) => {
-  let sum1 = 0;
-  let cur1 = list1.head;
-  while (cur1) {
-    sum1 = sum1 * 10;
-    sum1 += cur1.data;
-    cur1 = cur1.next;
-  }
-
-  let sum2 = 0;
-  let cur2 = list2.head;
-  while (cur2) {
-    sum2 = sum2 * 10;
-    sum2 += cur2.data;
-    cur2 = cur2.next;
-  }
-
+  sum1 = getSingleLinkedListSum(list1);
+  sum2 = getSingleLinkedListSum(list2);
   return sum1 + sum2;
+};
+
+const getSingleLinkedListSum = (list) => {
+  let sum = 0;
+  let cur = list.head;
+  while (cur) {
+    sum = sum * 10;
+    sum += cur.data;
+    cur = cur.next;
+  }
+  return sum;
 };
 
 let list1 = new LinkedList(6);
