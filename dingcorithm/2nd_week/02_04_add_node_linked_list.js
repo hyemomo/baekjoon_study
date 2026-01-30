@@ -34,15 +34,23 @@ class LinkedList {
   }
   // index 위치에 value라는 노드 추가하기
   addNode(index, value) {
-    let new_node = new Node(value);
-    let current =this.head;
+    const newNode = new Node(value);
+    if (index === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
     let count = 0;
+    let prev = null;
+
     while (current) {
       if (index === count) {
-        new_node.next = current.next;
-        current.next = new_node;
+        newNode.next = current;
+        prev.next = newNode;
         break;
       }
+      prev = current;
       current = current.next;
       count++;
     }
@@ -50,9 +58,10 @@ class LinkedList {
 }
 let ll = new LinkedList(1);
 ll.append(2);
-ll.append(3);
+ll.append(4);
 ll.append(5);
 ll.append(6);
 
-ll.addNode(2, 4);
+ll.addNode(0, 0);
+ll.addNode(3, 3);
 ll.printAll();
