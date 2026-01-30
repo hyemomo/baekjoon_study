@@ -30,30 +30,20 @@ class LinkedList {
       current = current.next;
       count += 1;
     }
-    return current.data;
+    return current;
   }
+
   // index 위치에 value라는 노드 추가하기
   addNode(index, value) {
-    const newNode = new Node(value);
+    let new_node = new Node(value);
     if (index === 0) {
-      newNode.next = this.head;
-      this.head = newNode;
+      new_node.next = this.head;
+      this.head = new_node;
       return;
     }
-    let current = this.head;
-    let count = 0;
-    let prev = null;
-
-    while (current) {
-      if (index === count) {
-        newNode.next = current;
-        prev.next = newNode;
-        break;
-      }
-      prev = current;
-      current = current.next;
-      count++;
-    }
+    let prev = this.getNode(index - 1);
+    new_node.next = prev.next;
+    prev.next = new_node;
   }
 }
 let ll = new LinkedList(1);
