@@ -11,14 +11,9 @@ class Stack {
   }
 
   push(value) {
-    const newNode = new Node();
-    newNode.data = value;
-
-    if (this.head == null) this.head = newNode;
-    else {
-      newNode.next = this.head;
-      this.head = newNode;
-    }
+    const newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
   }
 
   pop() {
