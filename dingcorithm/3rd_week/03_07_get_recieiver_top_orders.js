@@ -1,16 +1,17 @@
-function getReceiverTopOrders(height) {
-  let answer = [];
-  for (let i = height.length - 1; i > 0; i--) {
-    for (let j = i - 1; j >= 0; j--) {
-      if (height[i] <= height[j]) {
-        answer[i] = j + 1;
+function getReceiverTopOrders(heights) {
+let answer = new Array(heights.length).fill(0);
+  while (heights.length) {
+    let height = heights.pop();
+    let idx = heights.length;
+    for (let i = heights.length - 1; i > -1; i--) {
+      if (heights[i] > height) {
+        answer[idx] = i + 1;
         break;
-      } else {
-        answer[i] = 0;
       }
-    }
-    answer[0] = 0;
+    }      
+
   }
+
   return answer;
 }
 function main() {
