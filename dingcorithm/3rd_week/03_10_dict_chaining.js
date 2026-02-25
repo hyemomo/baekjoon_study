@@ -19,7 +19,8 @@ class LinkedTuple {
       if (key === k) {
         return v;
       }
-    }return undefined
+    }
+    return undefined;
   }
 }
 const bucket = new LinkedTuple();
@@ -27,5 +28,33 @@ bucket.add("333", 7);
 bucket.add("77", 6);
 
 console.log(bucket.get("333")); // 7
-console.log(bucket.get("77"));  // 6
+console.log(bucket.get("77")); // 6
 console.log(bucket.get("999")); // undefined
+console.log(bucket.items);
+
+class LinkedDict {
+  constructor() {
+    this.items = new Array(8);
+    for (let i = 0; i < this.items.length; i++)
+      this.items[i] = new LinkedTuple();
+  }
+  put(key, value) {
+    const s = String(key);
+    let index = Math.abs(this.hash(s)) % this.items.length;
+    this.items[index].add(key, value);
+  }
+  get(key) {
+    const s = String(key);
+    let index = Math.abs(this.hash(s)) % this.items.length;
+    return this.items[index].get(key);
+  }
+  hash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      let char = str.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash;
+    }
+    return hash;
+  }
+}
