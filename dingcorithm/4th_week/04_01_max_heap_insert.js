@@ -27,3 +27,4 @@ maxHeap.insert(4);
 maxHeap.insert(2);
 maxHeap.insert(9);
 console.log(maxHeap.items); // [null, 9, 4, 2, 3] 가 출력되어야 합니다!
+
