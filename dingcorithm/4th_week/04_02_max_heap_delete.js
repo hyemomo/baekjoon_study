@@ -34,19 +34,22 @@ class MaxHeap2 {
     const deleted = this.items.pop();
     let idx = 1;
     while (idx * 2 < this.items.length) {
-      if (this.items[idx * 2] > this.items[idx * 2 + 1]) {
-        [this.items[idx], this.items[idx * 2]] = [
-          this.items[idx * 2],
-          this.items[idx],
-        ];
-        idx = idx * 2;
-      } else {
-        [this.items[idx], this.items[idx * 2 + 1]] = [
-          this.items[idx * 2 + 1],
-          this.items[idx],
-        ];
-        idx = idx * 2 + 1;
+      let left = idx * 2;
+      let right = idx * 2 + 1;
+      let biggerChild = left;
+      if (right < this.items.length && this.items[right] > this.items[left]) {
+        biggerChild = right;
       }
+      if (this.items[idx] < this.items[biggerChild]){
+        [this.items[idx], this.items[biggerChild]] = [
+          this.items[biggerChild],
+          this.items[idx],
+        ];
+      }else{
+        break
+      }
+        
+      idx = biggerChild;
     }
     return deleted;
   }
