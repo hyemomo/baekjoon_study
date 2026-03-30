@@ -1,0 +1,9 @@
+function solution(s) {
+  let cum = 0;
+  for (const ch of s) {
+    cum += ch === "(" ? 1 : -1;
+    if (cum < 0) return false;
+  }
+
+  return cum === 0 ? true : false;
+}
